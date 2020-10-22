@@ -194,7 +194,7 @@ let app = new Vue({
                 <b>{{ questions[currentQuestion].question }}</b>
             </h4>
             <div class="container">
-                <div v-for='(variant, idx) in questions[currentQuestion].variants' @click='getChoise($event)' class='div-var'>{{variant}}</div>
+                <div v-for='(variant, idx) in questions[currentQuestion].variants' @click='getChoise($event)' class='d-flex align-items-center div-var'>{{variant}}</div>
             </div>
             <button id='nextQuestionBtn' class='btn btn-primary' @click='nextQuestion($event)' disabled>next</button>
         </div>
