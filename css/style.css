@@ -68,8 +68,7 @@ img {
 }
 .quest-image {
     width: 50%;
-    height: 200px;
-    border: none;
+    height: auto;
 }
 
 
