@@ -71,6 +71,16 @@ img {
     height: auto;
 }
 
+.div-var {
+  width: 50%;
+  border: 1px solid grey;
+  margin: 0 auto;
+  padding-left: 10px;
+  border-radius: 2px;
+}
+.div-var:hover {
+  background-color: antiquewhite;
+}
 
 input {
   -webkit-appearance: none;
@@ -135,8 +145,16 @@ input:checked {
       width: 90%;
       height: auto;
       max-height: 200px;
-      
   }
+
+  .div-var {
+    width: 80%;
+    border: 1px solid grey;
+    margin: 0 auto;
+    padding-left: 10px;
+    border-radius: 2px;
+  }
+
   li {
     width: 100%;
   }

@@ -9,6 +9,12 @@ let questions = [
         ],
         answer: '1984',
         image: './img/0.jpg',
+        descr: [
+            'description 1',
+            'description 2',
+            'description 3',
+            'description 4'
+        ],
     },
     {
         question: 'Who plays the Terminator?',
@@ -20,6 +26,12 @@ let questions = [
         ],
         answer: 'Arnold Schwarzenegger',
         image: './img/1.jpg',
+        descr: [
+            'description 1',
+            'description 2',
+            'description 3',
+            'description 4'
+        ],
     },
     {
         question: 'The Terminator was directed by?',
@@ -31,6 +43,12 @@ let questions = [
         ],
         answer: 'James Cameron',
         image: './img/2.jpg',
+        descr: [
+            'description 1',
+            'description 2',
+            'description 3',
+            'description 4'
+        ],
     },
     {
         question: 'Which model the Terminator was?',
@@ -42,6 +60,12 @@ let questions = [
         ],
         answer: 'T - 800',
         image: './img/3.jpg',
+        descr: [
+            'description 1',
+            'description 2',
+            'description 3',
+            'description 4'
+        ],
     },
     {
         question: 'Who arrived from the future with Terminator?',
@@ -53,6 +77,12 @@ let questions = [
         ],
         answer: 'Kyle Reese',
         image: './img/4.jpg',
+        descr: [
+            'description 1',
+            'description 2',
+            'description 3',
+            'description 4'
+        ],
     },
     {
         question: 'Who killed the Terminator?',
@@ -64,6 +94,12 @@ let questions = [
         ],
         answer: 'Sarah Connor',
         image: './img/5.jpg',
+        descr: [
+            'description 1',
+            'description 2',
+            'description 3',
+            'description 4'
+        ],
     },
     {
         question: 'What is a bar name where Kyle and Terminator fights at first time?',
@@ -75,6 +111,12 @@ let questions = [
         ],
         answer: 'Tech-Noir',
         image: './img/6.jpg',
+        descr: [
+            'description 1',
+            'description 2',
+            'description 3',
+            'description 4'
+        ],
     },
     {
         question: 'How many punks was on the street who gives a close to the Terminator?',
@@ -86,6 +128,12 @@ let questions = [
         ],
         answer: '3',
         image: './img/7.jpg',
+        descr: [
+            'description 1',
+            'description 2',
+            'description 3',
+            'description 4'
+        ],
     },
     {
         question: 'How Sarah Connor made money?',
@@ -97,6 +145,12 @@ let questions = [
         ],
         answer: 'Waiter',
         image: './img/8.jpg',
+        descr: [
+            'description 1',
+            'description 2',
+            'description 3',
+            'description 4'
+        ],
     },
     {
         question: 'What company makes "The Terminator"?',
@@ -108,6 +162,12 @@ let questions = [
         ],
         answer: 'Orion',
         image: './img/9.jpg',
+        descr: [
+            'description 1',
+            'description 2',
+            'description 3',
+            'description 4'
+        ],
     },
 ];
 
@@ -133,11 +193,9 @@ let app = new Vue({
             <h4>
                 <b>{{ questions[currentQuestion].question }}</b>
             </h4>
-            <ul>
-                <li v-for='(variant, idx) in questions[currentQuestion].variants'>
-                    <label><input type='radio' name='posAnswer' :value='variant' @click='getChoise($event)'>{{ variant }}</label>
-                </li>
-            </ul>
+            <div class="container">
+                <div v-for='(variant, idx) in questions[currentQuestion].variants' @click='getChoise($event)' class='div-var'>{{variant}}</div>
+            </div>
             <button id='nextQuestionBtn' class='btn btn-primary' @click='nextQuestion($event)' disabled>next</button>
         </div>
 
@@ -189,26 +247,42 @@ let app = new Vue({
 
         nextQuestion(event) {
             document.getElementById('nextQuestionBtn').disabled = true;
-            if (this.currentAnswer == questions[this.currentQuestion].answer) {
-                this.rightAnswer++;
-            }
+            
             if (this.currentQuestion < 9) {
                 this.currentQuestion++;
             } else {
                 this.questionScreen = false;
                 this.resultScreen = true;
             }
-            let inp = document.getElementsByTagName('input');
+            // делаем варианты ответов доступными для клика
+            let divVar = document.getElementsByClassName('div-var');
             for (let i = 0; i < 4; i++) {
-                if (inp[i].checked) {
-                    inp[i].checked = false;
-                }
+                divVar[i].style.pointerEvents = 'auto';
+                divVar[i].style.backgroundColor = 'transparent';
             }
         },
 
         getChoise(event) {
             document.getElementById('nextQuestionBtn').disabled = false;
-            this.currentAnswer = event.target.value;
+            this.currentAnswer = event.target.textContent;
+            if (this.currentAnswer == questions[this.currentQuestion].answer) {
+                this.rightAnswer++;
+            }
+            // делаем варианты недоступными для клика еще раз
+            let divVar = document.getElementsByClassName('div-var');
+            for (let i = 0; i < 4; i++) {
+                divVar[i].style.pointerEvents = 'none';
+                // окрашиваем в серый цвет, чтобы указать, что они не кликабельны
+                divVar[i].style.backgroundColor = 'rgba(100,100,100,0.3)';
+                // окрашиваем выбранный вариант в красный
+                if(divVar[i].innerText == this.currentAnswer) {
+                    divVar[i].style.backgroundColor = 'rgba(255,0,0,0.3)';
+                }
+                // окрашиваем правильный вариант в зеленый (если че, то красный тоже перекрасится)
+                if(divVar[i].innerText == questions[this.currentQuestion].answer) {
+                    divVar[i].style.backgroundColor = 'rgba(0,255,0,0.3)';
+                }
+            }
             console.log(this.currentAnswer);
             console.log(this.rightAnswer)
         }
