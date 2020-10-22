@@ -8,7 +8,7 @@ let questions = [
             '1991'
         ],
         answer: '1984',
-        image: './img/0.jpg',
+        image: '',
     },
     {
         question: 'Who plays the Terminator?',
@@ -19,7 +19,7 @@ let questions = [
             'Rick Rossovich'
         ],
         answer: 'Arnold Schwarzenegger',
-        image: './img/1.jpg',
+        image: '',
     },
     {
         question: 'The Terminator was directed by?',
