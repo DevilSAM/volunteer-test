@@ -8,7 +8,7 @@ let questions = [
             '1991'
         ],
         answer: '1984',
-        image: '',
+        image: './img/0.jpg',
     },
     {
         question: 'Who plays the Terminator?',
@@ -19,7 +19,7 @@ let questions = [
             'Rick Rossovich'
         ],
         answer: 'Arnold Schwarzenegger',
-        image: '',
+        image: './img/1.jpg',
     },
     {
         question: 'The Terminator was directed by?',
@@ -131,7 +131,7 @@ let app = new Vue({
         <div class='question-block' v-else-if='questionScreen'>
             <img :src='questions[currentQuestion].image' class='mx-auto d-block rounded quest-image'>
             <h4>
-                {{ questions[currentQuestion].question }}
+                <b>{{ questions[currentQuestion].question }}</b>
             </h4>
             <ul>
                 <li v-for='(variant, idx) in questions[currentQuestion].variants'>

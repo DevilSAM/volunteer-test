@@ -13,7 +13,7 @@ body {
 
 .test-title {
   text-decoration: underline;
-  margin: 50px auto;
+  margin-top: 50px;
 }
 
 h1, h2, h4, p {
@@ -119,6 +119,9 @@ input:checked {
 @media screen and (max-width: 1000px){
   body {
     font-size: 15px;
+  }
+  h4 {
+      font-size: 15px;
   }
   .start-game-block {
     padding-bottom: 5px;
