@@ -1,0 +1,19 @@
+{
+  "name": "volunteer",
+  "version": "1.0.0",
+  "description": "volunteer test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "DevilSAM",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "bootstrap-social": "^5.1.1",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.12.9",
+    "vue": "^2.6.10"
+  }
+}

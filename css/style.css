@@ -1,0 +1,156 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    background-image: url(https://img3.goodfon.com/wallpaper/nbig/8/b3/terminator-krasnye-glaza.jpg);
+    background-size: cover; 
+}
+
+.faded-background {
+  z-index: -1;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(200,200,200,0.7);
+}
+
+.test-title {
+  text-decoration: underline;
+}
+
+h1, h2, h4, p {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.start-game-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding-bottom: 20px;
+    width: 70%;
+    margin: 20px auto;
+}
+
+.question-block {
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 20px;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.difficult {
+    width: 20%;
+}
+
+ul {
+    list-style: none;
+}
+li {
+    width: 40%;
+    margin: 5px auto;
+}
+
+#nextQuestionBtn {
+    display: block;
+    margin: 5px auto;
+    margin-top: 20px;
+    width: 30%;
+}
+
+img {
+    display: block;
+    width: 500px;
+    margin: 5px auto;
+    border-radius: 15px;
+}
+.quest-image {
+    width: 50%;
+    height: 200px;;
+}
+
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+
+  border: 2px solid black;
+  transition: 0.2s all linear;
+  outline: none;
+  margin-right: 5px;
+
+  position: relative;
+  top: 4px;
+}
+input:checked {
+  border: 6px solid green;
+}
+
+#footer{
+  display: flex;
+  justify-content: center;
+  padding: 5px 30px;
+  font-family: Open Sans;
+  color: black;
+  margin-top: 50px;
+}
+
+#footer a {
+  padding: 0 2px;
+  margin-left: 3px;
+  color: #00f;
+  text-decoration: none;
+  transition: 3s;
+}
+#footer a:hover {
+  padding: 0 10px;
+  color: #0c30e0;
+  text-decoration: none;
+  transition: 1s;
+}
+
+@media screen and (max-width: 1000px){
+  body {
+    font-size: 15px;
+  }
+  .start-game-block {
+    padding-bottom: 5px;
+    width: 90%;
+  }
+  .question-block {
+    padding: 3px;
+    width: 90%;
+  }
+  .quest-image {
+      width: 90%;
+      height: auto;
+  }
+  li {
+    width: 100%;
+  }
+  .difficult {
+    width: 50%;
+  }
+  footer {
+    font-size: 10px;
+  }
+  body {
+    background-image: url(https://res-5.cloudinary.com/the-university-of-melbourne/image/upload/s--4i8L62AM--/c_fill,f_auto,h_1800,q_75,w_1200/v1/pursuit-uploads/955/e59/42f/955e5942f0fa9776ae0651b24a813c63b64bf8eccd4ca6e578d65244d053.jpg);
+  }
+  img {
+    width: 250px;
+  }
+  h1 {
+    font-size: 20px;
+  }
+  #footer {
+    margin-top: 0;
+  }
+}
