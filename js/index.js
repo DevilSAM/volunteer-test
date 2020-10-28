@@ -256,7 +256,7 @@ let app = new Vue({
             }
             // делаем варианты ответов доступными для клика
             let divVar = document.getElementsByClassName('div-var');
-            for (let i = 0; i < 4; i++) {
+            for (let i = 0; i < divVar.length; i++) {
                 divVar[i].style.pointerEvents = 'auto';
                 divVar[i].style.backgroundColor = 'transparent';
             }
@@ -270,7 +270,7 @@ let app = new Vue({
             }
             // делаем варианты недоступными для клика еще раз
             let divVar = document.getElementsByClassName('div-var');
-            for (let i = 0; i < 4; i++) {
+            for (let i = 0; i < divVar.length; i++) {
                 divVar[i].style.pointerEvents = 'none';
                 // окрашиваем в серый цвет, чтобы указать, что они не кликабельны
                 divVar[i].style.backgroundColor = 'rgba(100,100,100,0.3)';
@@ -283,6 +283,8 @@ let app = new Vue({
                     divVar[i].style.backgroundColor = 'rgba(0,255,0,0.3)';
                 }
             }
+            // а тут надо теперь приписать к выбранному варианту ответа какое-то пояснение
+            /// ///// ////////// /////////////// ///////////////////////
             console.log(this.currentAnswer);
             console.log(this.rightAnswer)
         }
