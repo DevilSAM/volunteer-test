@@ -44,7 +44,7 @@ let questions = [
         answer: 'James Cameron',
         image: './img/2.jpg',
         descr: [
-            'Stan was making visual effect so he has not enough time for directing :)',
+            'Stan was making visual effects so he has not enough time for directing :)',
             'Nope. Paul was too young that days.',
             'Sam made "The Evil Dead", but not "The Terminator"',
             'Sure!'
@@ -64,7 +64,7 @@ let questions = [
             'No. It was "scarecrows" but not the terminators :D',
             'Wrong. T-400 looks like a lot of breaks :)',
             'Warm but not. T-600 has rubber skin',
-            'Yes. T-800 has flesh, hair etc like a humans'
+            'Yes. Only T-800 has flesh, hair etc like a humans'
         ],
     },
     {
