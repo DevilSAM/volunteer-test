@@ -10,27 +10,27 @@ let questions = [
         answer: '1984',
         image: './img/0.jpg',
         descr: [
-            'description 1',
-            'description 2',
-            'description 3',
-            'description 4'
+            'Not so fast :)',
+            'Yeah! October 26, 1984',
+            'Too late :(',
+            'Terminator 2: Judgment Day already was released in this year'
         ],
     },
     {
         question: 'Who plays the Terminator?',
         variants: [
             'Earl Boen',
-            'Pual Winfield',
+            'Paul Winfield',
             'Arnold Schwarzenegger',
             'Rick Rossovich'
         ],
         answer: 'Arnold Schwarzenegger',
         image: './img/1.jpg',
         descr: [
-            'description 1',
-            'description 2',
-            'description 3',
-            'description 4'
+            'No. This is Dr. Silberman',
+            'No. This is Lt. Traxler',
+            'Too easy ;)',
+            'Who is this guy? :)'
         ],
     },
     {
@@ -38,16 +38,16 @@ let questions = [
         variants: [
             'Stan Winston',
             'Paul Andersen',
-            'Sam Raimy',
+            'Sam Raimi',
             'James Cameron'
         ],
         answer: 'James Cameron',
         image: './img/2.jpg',
         descr: [
-            'description 1',
-            'description 2',
-            'description 3',
-            'description 4'
+            'Stan was making visual effect so he has not enough time for directing :)',
+            'Nope. Paul was too young that days.',
+            'Sam made "The Evil Dead", but not "The Terminator"',
+            'Sure!'
         ],
     },
     {
@@ -61,10 +61,10 @@ let questions = [
         answer: 'T - 800',
         image: './img/3.jpg',
         descr: [
-            'description 1',
-            'description 2',
-            'description 3',
-            'description 4'
+            'No. It was "scarecrows" but not the terminators :D',
+            'Wrong. T-400 looks like a lot of breaks :)',
+            'Warm but not. T-600 has rubber skin',
+            'Yes. T-800 has flesh, hair etc like a humans'
         ],
     },
     {
@@ -78,10 +78,10 @@ let questions = [
         answer: 'Kyle Reese',
         image: './img/4.jpg',
         descr: [
-            'description 1',
-            'description 2',
-            'description 3',
-            'description 4'
+            'Yes. Kyle was that one brave man!',
+            'I don\'t know this name :)',
+            'Looks like you are wrong',
+            'This guy from "Cliffhanger" movie but not "The Terminator"'
         ],
     },
     {
@@ -95,10 +95,10 @@ let questions = [
         answer: 'Sarah Connor',
         image: './img/5.jpg',
         descr: [
-            'description 1',
-            'description 2',
-            'description 3',
-            'description 4'
+            'On the contrary the Terminator kills Kyle',
+            'The Terminator kills Traxler in the police station.',
+            'Yes. Sara had activate hydraulic machine that smashed the Terminator',
+            'Oh, really? John even wasn\'t born yet :D'
         ],
     },
     {
@@ -112,10 +112,10 @@ let questions = [
         answer: 'Tech-Noir',
         image: './img/6.jpg',
         descr: [
-            'description 1',
-            'description 2',
-            'description 3',
-            'description 4'
+            'I don\'t know this bar',
+            'You are right!',
+            'Black-Tech... Sounds like rock band but not the Bar name',
+            'Not in this world'
         ],
     },
     {
@@ -129,10 +129,10 @@ let questions = [
         answer: '3',
         image: './img/7.jpg',
         descr: [
-            'description 1',
-            'description 2',
-            'description 3',
-            'description 4'
+            'Just 1? Too easy...',
+            'No',
+            'Exactly!',
+            'Too many :-/'
         ],
     },
     {
@@ -146,10 +146,10 @@ let questions = [
         answer: 'Waiter',
         image: './img/8.jpg',
         descr: [
-            'description 1',
-            'description 2',
-            'description 3',
-            'description 4'
+            'This is not in her style',
+            'Does she sing?',
+            'I don\'t think so',
+            'Yes. She was a waiter in the "Big Jeff\'s"'
         ],
     },
     {
@@ -163,10 +163,10 @@ let questions = [
         answer: 'Orion',
         image: './img/9.jpg',
         descr: [
-            'description 1',
-            'description 2',
-            'description 3',
-            'description 4'
+            'No',
+            'Yes. Orion Pictures and Hemdale Films',
+            'No',
+            'No'
         ],
     },
 ];
@@ -194,7 +194,7 @@ let app = new Vue({
                 <b>{{ questions[currentQuestion].question }}</b>
             </h4>
             <div class="container">
-                <div v-for='(variant, idx) in questions[currentQuestion].variants' @click='getChoise($event)' class='d-flex align-items-center justify-content-center div-var'>{{variant}}</div>
+                <div v-for='(variant, idx) in questions[currentQuestion].variants' @click='getChoise($event)' class='d-flex flex-column align-items-center justify-content-center div-var'>{{variant}}</div>
             </div>
             <button id='nextQuestionBtn' class='btn btn-primary' @click='nextQuestion($event)' disabled>next</button>
         </div>
@@ -255,10 +255,14 @@ let app = new Vue({
                 this.resultScreen = true;
             }
             // делаем варианты ответов доступными для клика
+            // и тут же дубем удалять из вариантов вставленный ранее <p> с пояснениями из question[i].descr
             let divVar = document.getElementsByClassName('div-var');
             for (let i = 0; i < divVar.length; i++) {
                 divVar[i].style.pointerEvents = 'auto';
                 divVar[i].style.backgroundColor = 'transparent';
+                let lastEl = divVar[i].lastChild;
+                if (lastEl.tagName == 'P')
+                    lastEl.remove();
             }
         },
 
@@ -282,11 +286,14 @@ let app = new Vue({
                 if(divVar[i].innerText == questions[this.currentQuestion].answer) {
                     divVar[i].style.backgroundColor = 'rgba(0,255,0,0.3)';
                 }
+                // а тут надо теперь приписать к выбранному варианту ответа какое-то пояснение
+                // делаем это в последнюю очередь, так как это изменит сожержание ответа
+                if(divVar[i].innerText == this.currentAnswer) {
+                    let des = document.createElement("p")
+                    des.innerText = `${questions[this.currentQuestion].descr[i]}`
+                    divVar[i].appendChild(des)
+                }
             }
-            // а тут надо теперь приписать к выбранному варианту ответа какое-то пояснение
-            /// ///// ////////// /////////////// ///////////////////////
-            console.log(this.currentAnswer);
-            console.log(this.rightAnswer)
         }
     },
 

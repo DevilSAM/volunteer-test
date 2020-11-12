@@ -126,6 +126,10 @@ input:checked {
   transition: 1s;
 }
 
+.div-var p {
+  font-size: 14px;
+}
+
 @media screen and (max-width: 1000px){
   body {
     font-size: 15px;
